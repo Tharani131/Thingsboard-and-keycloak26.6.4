@@ -1,8 +1,3 @@
 # Keycloak backup
 keycloak-data-backup-2026-08-07/
 keycloak-migration-backups/
-*.sql
-
-# Build files
-*.jar
-target/

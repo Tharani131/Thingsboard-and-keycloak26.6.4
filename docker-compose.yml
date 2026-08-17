@@ -30,8 +30,6 @@ services:
     volumes:
        - keycloak-data:/opt/keycloak/data  
        - ./custom-theme/customTheme.jar:/opt/keycloak/providers/customTheme.jar
-       - ./custom-theme/email-otp-authenticator.jar:/opt/keycloak/providers/email-otp-authenticator.jar
-       - ./custom-theme/sms-otp-authenticator.jar:/opt/keycloak/providers/sms-otp-authenticator.jar
     healthcheck:
       test: ["CMD-SHELL", "bash -c 'echo > /dev/tcp/localhost/8080'"]
       interval: 10s
@@ -41,7 +39,7 @@ services:
   keycloak-test:
     image: quay.io/keycloak/keycloak:26.6.4
     container_name: keycloak-test
-    command: start-dev --import-realm
+    command: start-dev 
     ports:
       - "8081:8080"
     environment:
@@ -55,6 +53,7 @@ services:
        - ./custom-theme/customTheme.jar:/opt/keycloak/providers/customTheme.jar
        - ./sms-otp-authenticator-266.jar:/opt/keycloak/providers/sms-otp-authenticator.jar
        - ./email-authenticator-mesutpiskin.jar:/opt/keycloak/providers/email-authenticator-mesutpiskin.jar
+       - ./custom-theme/clym8Theme.jar:/opt/keycloak/providers/clym8Theme.jar
     healthcheck:
       test: ["CMD-SHELL", "bash -c 'echo > /dev/tcp/localhost/8080'"]
       interval: 10s
